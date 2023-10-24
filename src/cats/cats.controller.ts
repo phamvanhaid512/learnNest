@@ -8,7 +8,7 @@ export class CatsController {
     constructor(private catsService: CatsService) { }
     @Get('getAll') // Xử lý GET đến '/cats/getAll'
     findAllCats(): string {
-        return 'This is hai pham';
+        return 'This is hai phasdsdsdm';
     }
     @Post()
     async create(@Body() createCatDto: CreateCatDto) {
