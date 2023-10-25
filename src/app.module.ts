@@ -1,6 +1,13 @@
-import { Module } from '@nestjs/common';
-import { CastModule  } from './cats/cats.module';
+import { Module, NestModule, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './cats/common/middleware/logger.middleware';
+import { CastModule } from './cats/cats.module';
 @Module({
-  imports: [CastModule ]
+  imports: [CastModule]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'cats', method: RequestMethod.GET });
+  }
+}
