@@ -16,5 +16,6 @@ export class CatsService {
   ];
   findAllCats(): UserEntity[] {
     return this.users;
+    console.log("haipham");
   }
-}
+}  
